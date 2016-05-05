@@ -1,0 +1,132 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="WebAPI.TypeScript.Mapper.TypeScript" #>
+// ReSharper disable RedundantQualifier
+<#
+// Enums
+foreach (var module in mEnumsToGenerate) {
+#>
+module <#= module.Key #> {
+<#
+	foreach (var tsType in module) {
+#>
+	export enum <#= tsType.TsTypeName #> {
+<#
+		foreach (var enumMember in tsType.Members) {
+#>
+		<#=enumMember.Key #> = <#= enumMember.Value #>,
+<#		
+	}
+#>
+	}
+
+<#
+	}
+#>
+}
+<#
+}
+#>
+
+<#
+foreach (var tsType in mTypesToGenerate) {
+	if (mDebugMode) {
+#>
+
+<#
+	}
+#>
+module <#= tsType.ModuleName #> {
+	export interface I<#= tsType.TsTypeName #> <#= tsType.BaseTsType != null ? "extends " + string.Format("{0}.I{1}", ((TsTypeWithProperties)tsType.BaseTsType).ModuleName, tsType.BaseTsType.TsTypeName) : "" #>  {
+<#
+	foreach (var prop in tsType.Properties) {
+#>
+		<#=CamelCase(prop.Name) #>: <#= prop.TsType.TsTypeReferenceName #>;
+<#		
+	}
+#>
+	}
+
+<#
+	if (mDebugMode) {
+#>
+	// InheritanceHierarchyLevel: <#= (mDebugMode) ? ((TsTypeWithProperties)tsType).InheritanceHierarchyLevel.ToString() : "" #>
+<#
+	}
+#>
+	export class <#= tsType.TsTypeName #> <#= tsType.BaseTsType != null ? "extends " + tsType.BaseTsType.TsTypeReferenceName : "" #> implements I<#= tsType.TsTypeName #> {
+<#
+		foreach (var prop in tsType.Properties) {			
+#>
+		<#=CamelCase(prop.Name) #>: <#= prop.TsType.TsTypeReferenceName #>;
+<#		
+		}
+#>
+		public static fromJSON(json: any) : <#= tsType.TsTypeName #> {
+			if (json === undefined)
+				return undefined;
+			if (json === null)
+				return null;
+
+<#
+		if (tsType.BaseTsType == null) {
+#>
+			return {
+<#
+			for (var i = 0; i < tsType.Properties.Count; i++) { 
+				var prop = tsType.Properties[i];
+#>
+				<#= CamelCase(prop.Name) #>: <#= GetJsonAssignment(prop)#><#
+				if (i < tsType.Properties.Count - 1) { #>,
+<#				}
+			}
+#>
+
+			};
+<#			
+		} else {
+#>
+			var baseObj: <#=tsType.TsTypeName#> = <<#=tsType.TsTypeName#>> <#=tsType.BaseTsType.TsTypeReferenceName#>.fromJSON(json);
+<#
+			foreach (var prop in tsType.Properties) {
+#>
+			baseObj.<#= CamelCase(prop.Name) #> = <#= GetJsonAssignment(prop)#>;
+<#
+			}
+#>
+			return baseObj;
+<#
+		}
+#>
+		}
+	}
+}
+<#
+	}
+#>
+
+<#
+
+#>
+// ReSharper restore RedundantQualifier
+<#+
+
+string CamelCase(string identifier) {
+	return Char.ToLower(identifier[0]) + identifier.Substring(1);
+}
+
+string GetJsonAssignment(TsProperty prop) {
+	return GetAssignmentExpression(prop.TsType, "json." + CamelCase(prop.Name));
+}
+
+string GetAssignmentExpression(TsType type, string sourceExpression) {
+	if(type is TsMappedType) return string.Format(((TsMappedType)type).AssignmentTemplate, sourceExpression);
+	if(type is TsTypeWithProperties) return type.TsTypeReferenceName + ".fromJSON(" + sourceExpression + ")";
+	if(type is TsCollection) return sourceExpression + " === null ? null : " + sourceExpression + ".map(o => " + GetAssignmentExpression(((TsCollection)type).TsItemType, "o") + ")";
+	return sourceExpression;
+}
+#>
+
