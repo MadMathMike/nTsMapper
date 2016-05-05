@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <projectUrl>https://github.com/Aviacode/nTsMapper</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Simple tool to transpile DTO classes used in WebAPI action methods to TypeScript interfaces</description>
+    <releaseNotes>Initial Release</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+  </metadata>
+</package>

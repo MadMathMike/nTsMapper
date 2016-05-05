@@ -102,8 +102,10 @@
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
+  </Target>-->
+  <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release'">
+	<MakeDir Directories="Output" Condition="!Exists('Output')" />
+    <Exec Command=".nuget\NuGet.exe pack nTsMapper.csproj -Prop Configuration=Release -OutputDirectory Output">
+    </Exec>
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
