@@ -1,6 +1,10 @@
 # nTsMapper
 Simple tool to transpile DTO classes used in WebAPI action methods to TypeScript.
 
+## Getting nTsMapper
+
+nTsMapper is published as a nuget package [https://www.nuget.org/packages/nTsMapper](https://www.nuget.org/packages/nTsMapper).  You can install the pacakge from the package manager console with the following command: ```Install-Package nTsMapper```
+
 ## Basic Information
 This application will inspect the specified .NET dll for WebAPI controller methods to produce TypeScript code for all the command parameter and DTO classes used.
 
@@ -41,6 +45,16 @@ public HttpResponseMessage DeleteCustomer(CustomerCommandParameter commandParame
 In this example, **nTsMapper** will find both the ```CustomerDeleteResult``` and the ```CustomerCommandParameter``` classes.
 
 **Note**: the ```ResponseType``` attribute is declared in WebAPI 2.0 and higher in System.Web.Http.Description.
+
+If multiple ```ResponseType``` attributes are specified, the first class will be considered the success case and any subsequent classes will be treated as error casses.   For example:
+
+```c#
+[ResponseType(typeof(CustomerDeleteResult))]
+[ResponseType(typeof(CustomerErrorDTO))]
+public HttpResponseMessage DeleteCustomer(CustomerCommandParameter commandParameter)
+```
+
+At present, the success and error information is not being utilized, but may be used in future release.
 
 ## TypeScript
 
