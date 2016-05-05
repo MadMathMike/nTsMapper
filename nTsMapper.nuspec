@@ -10,5 +10,6 @@
     <description>Simple tool to transpile DTO classes used in WebAPI action methods to TypeScript interfaces</description>
     <releaseNotes>Initial Release</releaseNotes>
     <copyright>Copyright 2016</copyright>
+	<tags>WebAPI TypeScript Mapper</tags>
   </metadata>
 </package>
