@@ -1,6 +1,9 @@
 # nTsMapper
 Simple tool to transpile DTO classes used in WebAPI action methods to TypeScript.
 
+## License
+[MIT](https://opensource.org/licenses/MIT)
+
 ## Getting nTsMapper
 
 nTsMapper is published as a nuget package [https://www.nuget.org/packages/nTsMapper](https://www.nuget.org/packages/nTsMapper).  You can install the pacakge from the package manager console with the following command: ```Install-Package nTsMapper```
@@ -169,10 +172,6 @@ module WebApi.Models.Customers {
 	}
 }
 ```
-
-
-## License
-[MIT](https://opensource.org/licenses/MIT)
 
 ## Dependencies
 None
