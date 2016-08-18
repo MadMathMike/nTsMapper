@@ -7,21 +7,20 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-
-using nTsMapper.TypeScript;
-
 namespace nTsMapper
 {
+    using System.Globalization;
     using System.Linq;
     using System.Text;
     using System.Collections.Generic;
+    using nTsMapper.TypeScript;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+    #line 1 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
     public partial class TypeScriptGenerator : TypeScriptGeneratorBase
     {
@@ -33,7 +32,7 @@ namespace nTsMapper
         {
             this.Write("// ReSharper disable RedundantQualifier\r\n");
             
-            #line 8 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 9 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 // Enums
 foreach (var module in mEnumsToGenerate) {
@@ -43,14 +42,14 @@ foreach (var module in mEnumsToGenerate) {
             #line hidden
             this.Write("module ");
             
-            #line 12 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 13 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(module.Key));
             
             #line default
             #line hidden
             this.Write(" {\r\n");
             
-            #line 13 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 14 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 	foreach (var tsType in module) {
 
@@ -59,14 +58,14 @@ foreach (var module in mEnumsToGenerate) {
             #line hidden
             this.Write("\texport enum ");
             
-            #line 16 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 17 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tsType.TsTypeName));
             
             #line default
             #line hidden
             this.Write(" {\r\n");
             
-            #line 17 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 18 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 		foreach (var enumMember in tsType.Members) {
 
@@ -75,21 +74,21 @@ foreach (var module in mEnumsToGenerate) {
             #line hidden
             this.Write("\t\t");
             
-            #line 20 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 21 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(enumMember.Key));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 20 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 21 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(enumMember.Value));
             
             #line default
             #line hidden
             this.Write(",\r\n");
             
-            #line 21 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 22 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 		
 	}
 
@@ -98,7 +97,7 @@ foreach (var module in mEnumsToGenerate) {
             #line hidden
             this.Write("\t}\r\n\r\n");
             
-            #line 26 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 27 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 	}
 
@@ -107,7 +106,7 @@ foreach (var module in mEnumsToGenerate) {
             #line hidden
             this.Write("}\r\n");
             
-            #line 30 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 31 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 }
 
@@ -116,7 +115,7 @@ foreach (var module in mEnumsToGenerate) {
             #line hidden
             this.Write("\r\n");
             
-            #line 34 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 35 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 foreach (var tsType in mTypesToGenerate) {
 	if (mDebugMode) {
@@ -126,7 +125,7 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write("\r\n");
             
-            #line 39 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 40 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 	}
 
@@ -135,28 +134,28 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write("module ");
             
-            #line 42 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 43 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tsType.ModuleName));
             
             #line default
             #line hidden
             this.Write(" {\r\n\texport interface I");
             
-            #line 43 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 44 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tsType.TsTypeName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 43 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 44 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tsType.BaseTsType != null ? "extends " + string.Format("{0}.I{1}", ((TsTypeWithProperties)tsType.BaseTsType).ModuleName, tsType.BaseTsType.TsTypeName) : ""));
             
             #line default
             #line hidden
             this.Write("  {\r\n");
             
-            #line 44 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 45 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 	foreach (var prop in tsType.Properties) {
 
@@ -165,21 +164,21 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write("\t\t");
             
-            #line 47 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 48 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CamelCase(prop.Name)));
             
             #line default
             #line hidden
             this.Write(": ");
             
-            #line 47 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 48 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.TsType.TsTypeReferenceName));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 48 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 49 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 		
 	}
 
@@ -188,7 +187,7 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write("\t}\r\n\r\n");
             
-            #line 53 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 54 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 	if (mDebugMode) {
 
@@ -197,14 +196,14 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write("\t// InheritanceHierarchyLevel: ");
             
-            #line 56 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 57 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture((mDebugMode) ? ((TsTypeWithProperties)tsType).InheritanceHierarchyLevel.ToString() : ""));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 57 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 58 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 	}
 
@@ -213,28 +212,28 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write("\texport class ");
             
-            #line 60 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 61 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tsType.TsTypeName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 60 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 61 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tsType.BaseTsType != null ? "extends " + tsType.BaseTsType.TsTypeReferenceName : ""));
             
             #line default
             #line hidden
             this.Write(" implements I");
             
-            #line 60 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 61 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tsType.TsTypeName));
             
             #line default
             #line hidden
             this.Write(" {\r\n");
             
-            #line 61 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 62 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 		foreach (var prop in tsType.Properties) {			
 
@@ -243,21 +242,21 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write("\t\t");
             
-            #line 64 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 65 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CamelCase(prop.Name)));
             
             #line default
             #line hidden
             this.Write(": ");
             
-            #line 64 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 65 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.TsType.TsTypeReferenceName));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 65 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 66 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 		
 		}
 
@@ -266,7 +265,7 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write("\t\tpublic static fromJSON(json: any) : ");
             
-            #line 68 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 69 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tsType.TsTypeName));
             
             #line default
@@ -274,7 +273,7 @@ foreach (var tsType in mTypesToGenerate) {
             this.Write(" {\r\n\t\t\tif (json === undefined)\r\n\t\t\t\treturn undefined;\r\n\t\t\tif (json === null)\r\n\t\t\t" +
                     "\treturn null;\r\n\r\n");
             
-            #line 74 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 75 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 		if (tsType.BaseTsType == null) {
 
@@ -283,7 +282,7 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write("\t\t\treturn {\r\n");
             
-            #line 78 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 79 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 			for (var i = 0; i < tsType.Properties.Count; i++) { 
 				var prop = tsType.Properties[i];
@@ -293,20 +292,20 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write("\t\t\t\t");
             
-            #line 82 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 83 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CamelCase(prop.Name)));
             
             #line default
             #line hidden
             this.Write(": ");
             
-            #line 82 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 83 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetJsonAssignment(prop)));
             
             #line default
             #line hidden
             
-            #line 82 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 83 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 				if (i < tsType.Properties.Count - 1) { 
             
@@ -314,7 +313,7 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write(",\r\n");
             
-            #line 84 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 85 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 				}
 			}
 
@@ -323,7 +322,7 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write("\r\n\t\t\t};\r\n");
             
-            #line 89 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 90 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 			
 		} else {
 
@@ -332,28 +331,28 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write("\t\t\tvar baseObj: ");
             
-            #line 92 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 93 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tsType.TsTypeName));
             
             #line default
             #line hidden
             this.Write(" = <");
             
-            #line 92 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 93 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tsType.TsTypeName));
             
             #line default
             #line hidden
             this.Write("> ");
             
-            #line 92 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 93 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(tsType.BaseTsType.TsTypeReferenceName));
             
             #line default
             #line hidden
             this.Write(".fromJSON(json);\r\n");
             
-            #line 93 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 94 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 			foreach (var prop in tsType.Properties) {
 
@@ -362,21 +361,21 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write("\t\t\tbaseObj.");
             
-            #line 96 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 97 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CamelCase(prop.Name)));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 96 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 97 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetJsonAssignment(prop)));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 97 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 98 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 			}
 
@@ -385,7 +384,7 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write("\t\t\treturn baseObj;\r\n");
             
-            #line 101 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 102 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 		}
 
@@ -394,7 +393,7 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write("\t\t}\r\n\t}\r\n}\r\n");
             
-            #line 107 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 108 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 	}
 
@@ -403,7 +402,7 @@ foreach (var tsType in mTypesToGenerate) {
             #line hidden
             this.Write("\r\n");
             
-            #line 111 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+            #line 112 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 
 
@@ -414,11 +413,38 @@ foreach (var tsType in mTypesToGenerate) {
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 115 "C:\code\WebAPI.TypeScript.Mapper\TypeScriptGenerator.tt"
+        #line 116 "C:\Development\ProCoder10\nTsMapper\TypeScriptGenerator.tt"
 
 
+// camel case converter code borrowed from JSON.NET
 string CamelCase(string identifier) {
-	return Char.ToLower(identifier[0]) + identifier.Substring(1);
+	if (string.IsNullOrEmpty(identifier))
+		return identifier;
+
+	if (!char.IsUpper(identifier[0]))
+		return identifier;
+
+	StringBuilder sb = new StringBuilder();
+	for (int i = 0; i < identifier.Length; i++)
+	{
+		bool hasNext = (i + 1 < identifier.Length);
+		if ((i == 0 || !hasNext) || char.IsUpper(identifier[i + 1]))
+		{
+			char lowerCase;
+
+			lowerCase = char.ToLower(identifier[i], CultureInfo.InvariantCulture);
+
+			sb.Append(lowerCase);
+		}
+		else
+		{
+			sb.Append(identifier.Substring(i));
+			break;
+		}
+	}
+
+	return sb.ToString();
+
 }
 
 string GetJsonAssignment(TsProperty prop) {

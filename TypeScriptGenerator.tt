@@ -1,9 +1,10 @@
 ﻿<#@ template language="C#" #>
 <#@ assembly name="System.Core" #>
+<#@ import namespace="System.Globalization" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="WebAPI.TypeScript.Mapper.TypeScript" #>
+<#@ import namespace="nTsMapper.TypeScript" #>
 // ReSharper disable RedundantQualifier
 <#
 // Enums
@@ -114,8 +115,35 @@ module <#= tsType.ModuleName #> {
 // ReSharper restore RedundantQualifier
 <#+
 
+// camel case converter code borrowed from JSON.NET
 string CamelCase(string identifier) {
-	return Char.ToLower(identifier[0]) + identifier.Substring(1);
+	if (string.IsNullOrEmpty(identifier))
+		return identifier;
+
+	if (!char.IsUpper(identifier[0]))
+		return identifier;
+
+	StringBuilder sb = new StringBuilder();
+	for (int i = 0; i < identifier.Length; i++)
+	{
+		bool hasNext = (i + 1 < identifier.Length);
+		if ((i == 0 || !hasNext) || char.IsUpper(identifier[i + 1]))
+		{
+			char lowerCase;
+
+			lowerCase = char.ToLower(identifier[i], CultureInfo.InvariantCulture);
+
+			sb.Append(lowerCase);
+		}
+		else
+		{
+			sb.Append(identifier.Substring(i));
+			break;
+		}
+	}
+
+	return sb.ToString();
+
 }
 
 string GetJsonAssignment(TsProperty prop) {
