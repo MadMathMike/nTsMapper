@@ -28,6 +28,19 @@ namespace nTsMapper
 			{
 				new TypeMapping
 				{
+					MatchesType = tr => tr.FullName == "NodaTime.LocalDate" || tr.IsGenericType && tr.GetGenericTypeDefinition() == typeof(Nullable<>) && tr.GenericTypeArguments[0].FullName == "NodaTime.LocalDate",
+					DestinationType = "LocalDate",
+					DestinationAssignmentTemplate = "LocalDate.fromJSON({0})"
+				},
+				new TypeMapping
+				{
+					MatchesType = tr => tr.FullName == "NodaTime.Instant" || tr.IsGenericType && tr.GetGenericTypeDefinition() == typeof(Nullable<>) && tr.GenericTypeArguments[0].FullName == "NodaTime.Instant",
+					DestinationType = "Instant",
+					//DestinationAssignmentTemplate = "Instant.fromJSON({0}, tenantClockService)"
+					DestinationAssignmentTemplate = "TenantClockService.instantFromJSON({0})"
+				},
+				new TypeMapping
+				{
 					MatchesType = tr => typeof(DateTime) == tr,
 					DestinationType = "Date",
 					DestinationAssignmentTemplate = "{0}"
