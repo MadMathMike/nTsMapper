@@ -105,7 +105,7 @@
   </Target>-->
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release'">
 	<MakeDir Directories="Output" Condition="!Exists('Output')" />
-    <Exec Command=".nuget\NuGet.exe pack nTsMapper.csproj -Prop Configuration=Release -OutputDirectory Output">
+    <Exec Command=".nuget\NuGet.exe pack nTsMapper.csproj -Tool -Prop Configuration=Release -OutputDirectory Output">
     </Exec>
   </Target>
 </Project>
