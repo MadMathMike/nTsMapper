@@ -1,0 +1,9 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<nTsMapperOutput Condition=" '$(nTsMapperOutput)' == '' ">$(ProjectDir)Mapped.ts</nTsMapperOutput>
+	</PropertyGroup>
+	<Target Name="BeforeBuild" Inputs="$(nTsMapperInput)" Outputs="$(nTsMapperOutput)">
+		<Message Text="Running nTsMapper.exe to create $(nTsMapperOutput) file." />
+		<Exec Command="$(MSBuildThisFileDirectory)..\tools\nTsMapper.exe -assemblyPath &quot;$(nTsMapperInput)&quot; -outputfilename &quot;$(nTsMapperOutput)&quot;" />
+	</Target>
+</Project>

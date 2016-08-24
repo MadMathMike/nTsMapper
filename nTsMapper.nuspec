@@ -12,4 +12,8 @@
     <copyright>Copyright 2016</copyright>
 	<tags>WebAPI TypeScript Mapper</tags>
   </metadata>
+  <files>
+	<file src="dist\nTsMapper.exe" target="tools\"/>
+	<file src="nTsMapper.targets" target="build\"/>
+  </files>
 </package>

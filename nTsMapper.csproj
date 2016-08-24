@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="nTsMapper.targets" />
     <None Include="TypeScriptGenerator.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TypeScriptGenerator.cs</LastGenOutput>
@@ -104,7 +105,7 @@
   <Target Name="BeforeBuild">
   </Target>-->
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release'">
-	<MakeDir Directories="Output" Condition="!Exists('Output')" />
+    <MakeDir Directories="Output" Condition="!Exists('Output')" />
     <Exec Command=".nuget\NuGet.exe pack nTsMapper.csproj -Tool -Prop Configuration=Release -OutputDirectory Output">
     </Exec>
   </Target>
