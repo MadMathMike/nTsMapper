@@ -6,4 +6,7 @@
 		<Message Text="Running nTsMapper.exe to create $(nTsMapperOutput) file." />
 		<Exec Command="$(MSBuildThisFileDirectory)..\tools\nTsMapper.exe -assemblyPath &quot;$(nTsMapperInput)&quot; -outputfilename &quot;$(nTsMapperOutput)&quot;" />
 	</Target>
+	<Target Name="AfterBuild">
+		<Error Condition="'$(nTsMapperInput)' == ''" Text="The nTsMapper package requires that an nTsMapperInput property be set in the $(MSBuildProjectFile) file. See the nTsMapper README for details." />
+	</Target>
 </Project>
