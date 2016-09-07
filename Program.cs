@@ -21,9 +21,6 @@ namespace nTsMapper
 				return 1;
 			}
 
-			// For debugging purposes
-			//Console.Out.WriteLine(commandLineArgs.GetForDisplay());
-
 			var customMappings = new List<TypeMapping>
 			{
 				new TypeMapping
@@ -36,7 +33,6 @@ namespace nTsMapper
 				{
 					MatchesType = tr => tr.FullName == "NodaTime.Instant" || tr.IsGenericType && tr.GetGenericTypeDefinition() == typeof(Nullable<>) && tr.GenericTypeArguments[0].FullName == "NodaTime.Instant",
 					DestinationType = "Instant",
-					//DestinationAssignmentTemplate = "Instant.fromJSON({0}, tenantClockService)"
 					DestinationAssignmentTemplate = "TenantClockService.instantFromJSON({0})"
 				},
 				new TypeMapping
