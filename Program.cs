@@ -52,6 +52,12 @@ namespace nTsMapper
 					MatchesType = tr => typeof(Object) == tr,
 					DestinationType = "any",
 					DestinationAssignmentTemplate = "{0}"
+				},
+				new TypeMapping
+				{
+					MatchesType = tr => typeof(byte[]) == tr,
+					DestinationType = "string",
+					DestinationAssignmentTemplate = "{0}"
 				}
 			};
 
